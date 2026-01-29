@@ -46,9 +46,18 @@ function InlineHeader() {
             <Link href="/sim360" className="navLink">
               Overview
             </Link>
-            <Link href="/sim360/book" className="btn btnPrimary">
-              Book / Request
-            </Link>
+
+            {/* BOOK / REQUEST — COMING SOON */}
+            <button
+              type="button"
+              className="btn btnPrimary"
+              disabled
+              aria-disabled="true"
+              title="Coming soon"
+              style={{ opacity: 0.55, cursor: "not-allowed" }}
+            >
+              Book / Request (Coming soon)
+            </button>
           </nav>
         </div>
       </div>
