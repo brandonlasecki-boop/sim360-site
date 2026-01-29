@@ -36,9 +36,18 @@ export default function Sim360LandingPage() {
             </p>
 
             <div className="btnRow">
-              <Link href="/sim360/book" className="btn btnPrimary">
-                Book / Request
-              </Link>
+              {/* BOOK / REQUEST — COMING SOON */}
+              <button
+                type="button"
+                className="btn btnPrimary"
+                disabled
+                aria-disabled="true"
+                title="Coming soon"
+                style={{ opacity: 0.55, cursor: "not-allowed" }}
+              >
+                Book / Request (Coming soon)
+              </button>
+
               <a href="#capabilities" className="btn">
                 Explore capabilities
               </a>
@@ -133,10 +142,19 @@ export default function Sim360LandingPage() {
               <li>Academic cohort labs</li>
               <li>Vendor-hosted education programs</li>
             </ul>
+
+            {/* AVAILABILITY — COMING SOON */}
             <div className="btnRow">
-              <Link href="/sim360/book" className="btn btnPrimary">
-                Check availability
-              </Link>
+              <button
+                type="button"
+                className="btn btnPrimary"
+                disabled
+                aria-disabled="true"
+                title="Coming soon"
+                style={{ opacity: 0.55, cursor: "not-allowed" }}
+              >
+                Check availability (Coming soon)
+              </button>
             </div>
           </div>
 
