@@ -44,25 +44,34 @@ export default function SiteHeaderComponent() {
               background: "rgba(255,255,255,0.06)",
             }}
           />
-          <span style={{ fontWeight: 800, letterSpacing: "-0.02em" }}>Sim360</span>
+          <span style={{ fontWeight: 800, letterSpacing: "-0.02em" }}>
+            Sim360
+          </span>
         </Link>
 
         <nav style={{ display: "flex", alignItems: "center", gap: 12 }}>
           <Link href="/sim360" style={{ color: "rgba(255,255,255,0.86)" }}>
             Overview
           </Link>
-          <Link
-            href="/sim360/book"
+
+          {/* BOOK / REQUEST — COMING SOON */}
+          <button
+            type="button"
+            disabled
+            aria-disabled="true"
+            title="Coming soon"
             style={{
               padding: "10px 14px",
               borderRadius: 12,
               border: "1px solid rgba(125, 211, 252, 0.45)",
               background: "rgba(125, 211, 252, 0.14)",
               fontWeight: 700,
+              opacity: 0.55,
+              cursor: "not-allowed",
             }}
           >
-            Book / Request
-          </Link>
+            Book / Request (Coming soon)
+          </button>
         </nav>
       </div>
     </header>
