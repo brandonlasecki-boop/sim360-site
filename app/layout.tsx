@@ -13,18 +13,18 @@ function InlineHeader() {
     <header
       style={{
         background: "transparent",
-        paddingTop: 14, // keeps the “floating card” feel without sticking
+        paddingTop: 10, // slightly tighter
       }}
     >
       <div className="container">
         <div
           className="headerCard"
           style={{
-            padding: "22px 26px",
+            padding: "14px 18px", // ⬅️ smaller container
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
-            gap: 20,
+            gap: 16,
           }}
         >
           <Link href="/sim360" style={{ display: "flex", alignItems: "center" }}>
@@ -33,7 +33,7 @@ function InlineHeader() {
               alt="Sim360 Clinical Advancement Center"
               className="logoMark"
               style={{
-                height: "clamp(72px, 6vw, 96px)",
+                height: "clamp(72px, 6vw, 96px)", // unchanged
                 width: "auto",
                 display: "block",
                 objectFit: "contain",
@@ -42,12 +42,11 @@ function InlineHeader() {
             />
           </Link>
 
-          <nav style={{ display: "flex", alignItems: "center", gap: 12 }}>
+          <nav style={{ display: "flex", alignItems: "center", gap: 10 }}>
             <Link href="/sim360" className="navLink">
               Overview
             </Link>
 
-            {/* BOOK / REQUEST — COMING SOON */}
             <button
               type="button"
               className="btn btnPrimary"
@@ -75,11 +74,60 @@ function InlineFooter() {
       }}
     >
       <div className="container" style={{ padding: "22px 20px" }}>
-        <div style={{ fontSize: 13, color: "rgba(255,255,255,0.75)" }}>
-          © {new Date().getFullYear()} Sim360 Clinical Advancement Center.
-        </div>
-        <div style={{ fontSize: 13, marginTop: 6, color: "rgba(255,255,255,0.65)" }}>
-          Please do not submit patient-identifying information through public forms.
+        <div
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            alignItems: "flex-start",
+            justifyContent: "space-between",
+            gap: 16,
+          }}
+        >
+          <div style={{ fontSize: 13, color: "rgba(255,255,255,0.75)" }}>
+            © {new Date().getFullYear()} Sim360 Clinical Advancement Center.
+            <div
+              style={{
+                fontSize: 13,
+                marginTop: 6,
+                color: "rgba(255,255,255,0.65)",
+              }}
+            >
+              Please do not submit patient-identifying information through public
+              forms.
+            </div>
+          </div>
+
+          <div
+            style={{
+              fontSize: 13,
+              color: "rgba(255,255,255,0.75)",
+              lineHeight: 1.5,
+              minWidth: 220,
+            }}
+          >
+            <div style={{ fontWeight: 600, color: "rgba(255,255,255,0.85)" }}>
+              Contact
+            </div>
+
+            <a
+              href="mailto:info@sim-360.net"
+              style={{
+                display: "inline-block",
+                marginTop: 6,
+                color: "rgba(255,255,255,0.75)",
+                textDecoration: "underline",
+                textUnderlineOffset: 3,
+              }}
+            >
+              info@sim-360.net
+            </a>
+
+            <div style={{ marginTop: 8, color: "rgba(255,255,255,0.65)" }}>
+              3900 N. 10th St. Ste 1050
+              <br />
+              McAllen, TX 78501
+            </div>
+          </div>
         </div>
       </div>
     </footer>
@@ -88,9 +136,9 @@ function InlineFooter() {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
       <body>

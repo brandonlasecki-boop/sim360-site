@@ -1,79 +1,148 @@
+import type { Metadata } from "next";
+import "./globals.css";
 import Link from "next/link";
 
-export default function SiteHeader() {
+export const metadata: Metadata = {
+  title: "Sim360",
+  description:
+    "Tech-enabled healthcare simulation space and operational support for training, education, and hosted programs.",
+};
+
+function InlineHeader() {
   return (
     <header
       style={{
-        position: "sticky",
-        top: 0,
-        zIndex: 9999,
-        background: "rgba(0, 0, 0, 0.85)",
-        borderBottom: "2px solid rgba(125, 211, 252, 0.55)",
-        backdropFilter: "blur(10px)",
+        background: "transparent",
+        paddingTop: 14, // keeps the “floating card” feel without sticking
       }}
     >
-      <div
-        style={{
-          maxWidth: 1120,
-          margin: "0 auto",
-          padding: "14px 20px",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          gap: 14,
-        }}
-      >
-        <Link
-          href="/sim360"
+      <div className="container">
+        <div
+          className="headerCard"
           style={{
+            padding: "22px 26px",
             display: "flex",
             alignItems: "center",
-            gap: 12,
-            minWidth: 0,
+            justifyContent: "space-between",
+            gap: 20,
           }}
         >
-          <img
-            src="/brand/Sim360-Logo.jpg"
-            alt="Sim360"
-            style={{
-              height: 34,
-              width: "auto",
-              display: "block",
-              borderRadius: 8,
-              border: "1px solid rgba(255,255,255,0.18)",
-              background: "rgba(255,255,255,0.06)",
-            }}
-          />
-          <span style={{ fontWeight: 800, letterSpacing: "-0.02em" }}>
-            Sim360
-          </span>
-        </Link>
-
-        <nav style={{ display: "flex", alignItems: "center", gap: 12 }}>
-          <Link href="/sim360" style={{ color: "rgba(255,255,255,0.86)" }}>
-            Overview
+          <Link href="/sim360" style={{ display: "flex", alignItems: "center" }}>
+            <img
+              src="/brand/Sim360-Logo.png"
+              alt="Sim360 Clinical Advancement Center"
+              className="logoMark"
+              style={{
+                height: "clamp(72px, 6vw, 96px)",
+                width: "auto",
+                display: "block",
+                objectFit: "contain",
+                borderRadius: 16,
+              }}
+            />
           </Link>
 
-          {/* BOOK / REQUEST — COMING SOON */}
-          <button
-            type="button"
-            disabled
-            aria-disabled="true"
-            title="Coming soon"
-            style={{
-              padding: "10px 14px",
-              borderRadius: 12,
-              border: "1px solid rgba(125, 211, 252, 0.45)",
-              background: "rgba(125, 211, 252, 0.14)",
-              fontWeight: 700,
-              opacity: 0.55,
-              cursor: "not-allowed",
-            }}
-          >
-            Book / Request (Coming soon)
-          </button>
-        </nav>
+          <nav style={{ display: "flex", alignItems: "center", gap: 12 }}>
+            <Link href="/sim360" className="navLink">
+              Overview
+            </Link>
+
+            {/* BOOK / REQUEST — COMING SOON */}
+            <button
+              type="button"
+              className="btn btnPrimary"
+              disabled
+              aria-disabled="true"
+              title="Coming soon"
+              style={{ opacity: 0.55, cursor: "not-allowed" }}
+            >
+              Book / Request (Coming soon)
+            </button>
+          </nav>
+        </div>
       </div>
     </header>
+  );
+}
+
+function InlineFooter() {
+  return (
+    <footer
+      style={{
+        marginTop: 40,
+        borderTop: "1px solid rgba(167, 139, 250, 0.35)",
+        background: "rgba(0, 0, 0, 0.45)",
+      }}
+    >
+      <div className="container" style={{ padding: "22px 20px" }}>
+        <div
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            alignItems: "flex-start",
+            justifyContent: "space-between",
+            gap: 16,
+          }}
+        >
+          <div style={{ fontSize: 13, color: "rgba(255,255,255,0.75)" }}>
+            © {new Date().getFullYear()} Sim360 Clinical Advancement Center.
+            <div style={{ fontSize: 13, marginTop: 6, color: "rgba(255,255,255,0.65)" }}>
+              Please do not submit patient-identifying information through public forms.
+            </div>
+          </div>
+
+          <div
+            style={{
+              fontSize: 13,
+              color: "rgba(255,255,255,0.75)",
+              lineHeight: 1.5,
+              textAlign: "left",
+              minWidth: 220,
+            }}
+          >
+            <div style={{ fontWeight: 600, color: "rgba(255,255,255,0.85)" }}>
+              Contact
+            </div>
+
+            <a
+              href="mailto:info@sim-360.net"
+              style={{
+                display: "inline-block",
+                marginTop: 6,
+                color: "rgba(255,255,255,0.75)",
+                textDecoration: "underline",
+                textUnderlineOffset: 3,
+              }}
+            >
+              info@sim-360.net
+            </a>
+
+            <div style={{ marginTop: 8, color: "rgba(255,255,255,0.65)" }}>
+              3900 N. 10th St. Ste 1050
+              <br />
+              McAllen, TX 78501
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+}
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="en">
+      <body>
+        <div className="appShell">
+          <InlineHeader />
+          <main className="main">{children}</main>
+          <InlineFooter />
+        </div>
+      </body>
+    </html>
   );
 }
